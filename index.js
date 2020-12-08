@@ -11,7 +11,7 @@ app.set('view engine', 'html');
 
 const projects = {
     RecipeApp: 'I made a simple front-end recipe site that gets data from an API and displays it in a card.',
-    DribbbleDesign: 'I redesigned a site template found ond dribbble using CSS',
+    DribbbleDesign: 'I redesigned a site template found on dribbble using CSS',
     TamagatchiGame: 'I made a simple virtual pet game using Python.',
     HangmanGame: 'I made a simple hangman game using python',
     SageAdviceApp: "Team-made advice/joke/puppy picture app utilizing data from 3 API's"
@@ -28,12 +28,13 @@ app.get('/projects', (req,res)=>{
         }
     })
 })
+
 app.get('/projects/:id', (req,res)=>{
     const {id} = req.params;
-    res.render(`${id}`, {
+    res.render('proj', {
         locals: {
-            details: Object.values(projects),
-            projects: Object.keys(projects)
+            title: id,
+            details: projects[id]
         }
     })
 })
